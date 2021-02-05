@@ -1,0 +1,7 @@
+#board1 > div {
+  background: #5d9ad4;
+  border: 1px solid #ddd;
+  user-select: none;
+  border-radius: 6px;
+  transition: 0.1s;
+}
