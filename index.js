@@ -3,7 +3,7 @@ const columns = 10;
 const cellSize = "50px";
 
 let boatOrientation = 0;
-let boatType1 = 1;
+let boatType1 = 0;
 let gamemode1 = 0;
 let selected1 = [];
 
@@ -50,6 +50,7 @@ function click(x, y) {
 function placeBoats(x, y) {
   switch (boatType1) {
     case 0:
+      console.log("carrier");
       placeCarrier(x, y);
       break;
 
@@ -65,7 +66,13 @@ function placeBoats(x, y) {
 // places carrier (5 long boat)
 function placeCarrier(x, y) {
   if (boatOrientation == 0) {
-    if (selected1.includes(grid1[x][y])) {
+    if (
+      selected1.includes(`a:${x}:${y}`) ||
+      selected1.includes(`a:${x - 1}:${y}`) ||
+      selected1.includes(`a:${x - 2}:${y}`) ||
+      selected1.includes(`a:${x - 3}:${y}`) ||
+      selected1.includes(`a:${x - 4}:${y}`)
+    ) {
       console.log("error");
     } else {
       for (let i = 0; i < 5; i++) {
@@ -75,6 +82,21 @@ function placeCarrier(x, y) {
       }
     }
   } else {
+    if (
+      selected1.includes(`a:${x}:${y}`) ||
+      selected1.includes(`a:${x}:${y - 1}`) ||
+      selected1.includes(`a:${x}:${y - 2}`) ||
+      selected1.includes(`a:${x}:${y - 3}`) ||
+      selected1.includes(`a:${x}:${y - 4}`)
+    ) {
+      console.log("error");
+    } else {
+      for (let i = 0; i < 5; i++) {
+        document.getElementById(grid1[x][y + i]).style.backgroundColor = "red";
+        let newLength = selected1.push(`a:${x}:${y}`);
+        console.log(selected1);
+      }
+    }
   }
 }
 
@@ -82,10 +104,10 @@ function placeCarrier(x, y) {
 function placeCruiser(x, y) {
   if (boatOrientation == 0) {
     if (
-      new Array(5)
-        .fill(0)
-        .map((_, i) => i)
-        .map((v) => selected1.includes(grid1[x + v][y])(true))
+      selected1.includes(`a:${x}:${y}`) ||
+      selected1.includes(`a:${x - 1}:${y}`) ||
+      selected1.includes(`a:${x - 2}:${y}`) ||
+      selected1.includes(`a:${x - 3}:${y}`)
     ) {
       console.log("error");
     } else {
@@ -96,5 +118,36 @@ function placeCruiser(x, y) {
       }
     }
   } else {
+    if (
+      selected1.includes(`a:${x}:${y}`) ||
+      selected1.includes(`a:${x}:${y - 1}`) ||
+      selected1.includes(`a:${x}:${y - 2}`) ||
+      selected1.includes(`a:${x}:${y - 3}`)
+    ) {
+      console.log("error");
+    } else {
+      for (let i = 0; i < 4; i++) {
+        document.getElementById(grid1[x][y + i]).style.backgroundColor = "red";
+        let newLength = selected1.push(`a:${x}:${y}`);
+        console.log(selected1);
+      }
+    }
+  }
+}
+
+function boatRotation() {
+  if (boatOrientation == 0) {
+    boatOrientation = 1;
+  } else {
+    boatOrientation = 0;
+  }
+}
+
+function boatLength() {
+  console.log(boatType1);
+  if (boatType1 <= 2) {
+    boatType1++;
+  } else {
+    boatType1 = 0;
   }
 }
