@@ -25,7 +25,7 @@ for (let x = 0; x < columns; x++) {
 
     cell1.id = `a:${x}:${y}`;
     let cellid = `a:${x}:${y}`;
-    cell1.innerHTML = `${x}:${y}`;
+    //cell1.innerHTML = `${x}:${y}`;
 
     grid1[x][y] = cellid;
 
@@ -37,7 +37,7 @@ for (let x = 0; x < columns; x++) {
 
 // is run when cell is clicked
 function click(x, y) {
-  console.log(boatType1);
+  console.log(selected1);
   console.log("klickade");
   if (gamemode1 == 0) {
     placeBoats(x, y);
@@ -58,6 +58,14 @@ function placeBoats(x, y) {
       placeCruiser(x, y);
       break;
 
+    case 2:
+      placeThreelong(x, y);
+      break;
+
+    case 3:
+      placeSub(x, y);
+      break;
+
     default:
       break;
   }
@@ -68,32 +76,32 @@ function placeCarrier(x, y) {
   if (boatOrientation == 0) {
     if (
       selected1.includes(`a:${x}:${y}`) ||
-      selected1.includes(`a:${x - 1}:${y}`) ||
-      selected1.includes(`a:${x - 2}:${y}`) ||
-      selected1.includes(`a:${x - 3}:${y}`) ||
-      selected1.includes(`a:${x - 4}:${y}`)
+      selected1.includes(`a:${x + 1}:${y}`) ||
+      selected1.includes(`a:${x + 2}:${y}`) ||
+      selected1.includes(`a:${x + 3}:${y}`) ||
+      selected1.includes(`a:${x + 4}:${y}`)
     ) {
       console.log("error");
     } else {
       for (let i = 0; i < 5; i++) {
         document.getElementById(grid1[x + i][y]).style.backgroundColor = "red";
-        let newLength = selected1.push(`a:${x}:${y}`);
+        let newLength = selected1.push(`a:${x + i}:${y}`);
         console.log(selected1);
       }
     }
   } else {
     if (
       selected1.includes(`a:${x}:${y}`) ||
-      selected1.includes(`a:${x}:${y - 1}`) ||
-      selected1.includes(`a:${x}:${y - 2}`) ||
-      selected1.includes(`a:${x}:${y - 3}`) ||
-      selected1.includes(`a:${x}:${y - 4}`)
+      selected1.includes(`a:${x}:${y + 1}`) ||
+      selected1.includes(`a:${x}:${y + 2}`) ||
+      selected1.includes(`a:${x}:${y + 3}`) ||
+      selected1.includes(`a:${x}:${y + 4}`)
     ) {
       console.log("error");
     } else {
       for (let i = 0; i < 5; i++) {
         document.getElementById(grid1[x][y + i]).style.backgroundColor = "red";
-        let newLength = selected1.push(`a:${x}:${y}`);
+        let newLength = selected1.push(`a:${x}:${y + i}`);
         console.log(selected1);
       }
     }
@@ -105,30 +113,94 @@ function placeCruiser(x, y) {
   if (boatOrientation == 0) {
     if (
       selected1.includes(`a:${x}:${y}`) ||
-      selected1.includes(`a:${x - 1}:${y}`) ||
-      selected1.includes(`a:${x - 2}:${y}`) ||
-      selected1.includes(`a:${x - 3}:${y}`)
+      selected1.includes(`a:${x + 1}:${y}`) ||
+      selected1.includes(`a:${x + 2}:${y}`) ||
+      selected1.includes(`a:${x + 3}:${y}`)
     ) {
       console.log("error");
     } else {
       for (let i = 0; i < 4; i++) {
         document.getElementById(grid1[x + i][y]).style.backgroundColor = "red";
-        let newLength = selected1.push(`a:${x}:${y}`);
+        let newLength = selected1.push(`a:${x + i}:${y}`);
         console.log(selected1);
       }
     }
   } else {
     if (
       selected1.includes(`a:${x}:${y}`) ||
-      selected1.includes(`a:${x}:${y - 1}`) ||
-      selected1.includes(`a:${x}:${y - 2}`) ||
-      selected1.includes(`a:${x}:${y - 3}`)
+      selected1.includes(`a:${x}:${y + 1}`) ||
+      selected1.includes(`a:${x}:${y + 2}`) ||
+      selected1.includes(`a:${x}:${y + 3}`)
     ) {
       console.log("error");
     } else {
       for (let i = 0; i < 4; i++) {
         document.getElementById(grid1[x][y + i]).style.backgroundColor = "red";
-        let newLength = selected1.push(`a:${x}:${y}`);
+        let newLength = selected1.push(`a:${x}:${y + i}`);
+        console.log(selected1);
+      }
+    }
+  }
+}
+
+// places x (3 long boat)
+function placeThreelong(x, y) {
+  if (boatOrientation == 0) {
+    if (
+      selected1.includes(`a:${x}:${y}`) ||
+      selected1.includes(`a:${x + 1}:${y}`) ||
+      selected1.includes(`a:${x + 2}:${y}`)
+    ) {
+      console.log("error");
+    } else {
+      for (let i = 0; i < 3; i++) {
+        document.getElementById(grid1[x + i][y]).style.backgroundColor = "red";
+        let newLength = selected1.push(`a:${x + i}:${y}`);
+        console.log(selected1);
+      }
+    }
+  } else {
+    if (
+      selected1.includes(`a:${x}:${y}`) ||
+      selected1.includes(`a:${x}:${y + 1}`) ||
+      selected1.includes(`a:${x}:${y + 2}`)
+    ) {
+      console.log("error");
+    } else {
+      for (let i = 0; i < 3; i++) {
+        document.getElementById(grid1[x][y + i]).style.backgroundColor = "red";
+        let newLength = selected1.push(`a:${x}:${y + i}`);
+        console.log(selected1);
+      }
+    }
+  }
+}
+
+// places submarine (2 long boat)
+function placeSub(x, y) {
+  if (boatOrientation == 0) {
+    if (
+      selected1.includes(`a:${x}:${y}`) ||
+      selected1.includes(`a:${x - 1}:${y}`)
+    ) {
+      console.log("error");
+    } else {
+      for (let i = 0; i < 2; i++) {
+        document.getElementById(grid1[x + i][y]).style.backgroundColor = "red";
+        let newLength = selected1.push(`a:${x + i}:${y}`);
+        console.log(selected1);
+      }
+    }
+  } else {
+    if (
+      selected1.includes(`a:${x}:${y}`) ||
+      selected1.includes(`a:${x}:${y - 1}`)
+    ) {
+      console.log("error");
+    } else {
+      for (let i = 0; i < 2; i++) {
+        document.getElementById(grid1[x][y + i]).style.backgroundColor = "red";
+        let newLength = selected1.push(`a:${x}:${y + i}`);
         console.log(selected1);
       }
     }
