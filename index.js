@@ -223,3 +223,22 @@ function boatLength() {
     boatType1 = 0;
   }
 }
+
+function toggleBoats() {
+  console.log("workes");
+  if (gamemode1 == 0) {
+    for (let i = 0; i < grid1.length; i++) {
+      console.log(i);
+      let element = grid1[i];
+      document.getElementById(element).style.backgroundColor = "blue";
+    }
+
+    gamemode1 = 1;
+  } else {
+    for (let i = 0; i < selected1.length; i++) {
+      let element = selected1[i];
+      document.getElementById(element).style.backgroundColor = "red";
+    }
+    gamemode1 = 0;
+  }
+}
