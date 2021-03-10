@@ -75,33 +75,35 @@ function placeBoats(x, y) {
 function placeCarrier(x, y) {
   if (boatOrientation == 0) {
     if (
-      selected1.includes(`a:${x}:${y}`) ||
-      selected1.includes(`a:${x + 1}:${y}`) ||
-      selected1.includes(`a:${x + 2}:${y}`) ||
-      selected1.includes(`a:${x + 3}:${y}`) ||
-      selected1.includes(`a:${x + 4}:${y}`)
+      selected1.includes(grid1[x - 2][y]) ||
+      selected1.includes(grid1[x - 1][y]) ||
+      selected1.includes(grid1[x][y]) ||
+      selected1.includes(grid1[x + 1][y]) ||
+      selected1.includes(grid1[x + 2][y]) ||
+      x - 2 < 0 ||
+      x + 2 > 9
     ) {
-      console.log("error");
     } else {
-      for (let i = 0; i < 5; i++) {
+      for (let i = -2; i < 3; i++) {
         document.getElementById(grid1[x + i][y]).style.backgroundColor = "red";
-        let newLength = selected1.push(`a:${x + i}:${y}`);
+        let newLength = selected1.push(grid1[x + i][y]);
         console.log(selected1);
       }
     }
   } else {
     if (
-      selected1.includes(`a:${x}:${y}`) ||
-      selected1.includes(`a:${x}:${y + 1}`) ||
-      selected1.includes(`a:${x}:${y + 2}`) ||
-      selected1.includes(`a:${x}:${y + 3}`) ||
-      selected1.includes(`a:${x}:${y + 4}`)
+      selected1.includes(grid1[x][y - 2]) ||
+      selected1.includes(grid1[x][y - 1]) ||
+      selected1.includes(grid1[x][y]) ||
+      selected1.includes(grid1[x][y + 1]) ||
+      selected1.includes(grid1[x][y + 2]) ||
+      y - 2 < 0 ||
+      y + 2 > 9
     ) {
-      console.log("error");
     } else {
-      for (let i = 0; i < 5; i++) {
+      for (let i = -2; i < 3; i++) {
         document.getElementById(grid1[x][y + i]).style.backgroundColor = "red";
-        let newLength = selected1.push(`a:${x}:${y + i}`);
+        let newLength = selected1.push(grid1[x][y + i]);
         console.log(selected1);
       }
     }
@@ -112,31 +114,33 @@ function placeCarrier(x, y) {
 function placeCruiser(x, y) {
   if (boatOrientation == 0) {
     if (
-      selected1.includes(`a:${x}:${y}`) ||
-      selected1.includes(`a:${x + 1}:${y}`) ||
-      selected1.includes(`a:${x + 2}:${y}`) ||
-      selected1.includes(`a:${x + 3}:${y}`)
+      selected1.includes(grid1[x - 1][y]) ||
+      selected1.includes(grid1[x][y]) ||
+      selected1.includes(grid1[x + 1][y]) ||
+      selected1.includes(grid1[x + 2][y]) ||
+      x - 1 < 0 ||
+      x + 2 > 9
     ) {
-      console.log("error");
     } else {
-      for (let i = 0; i < 4; i++) {
+      for (let i = -1; i < 3; i++) {
         document.getElementById(grid1[x + i][y]).style.backgroundColor = "red";
-        let newLength = selected1.push(`a:${x + i}:${y}`);
+        let newLength = selected1.push(grid1[x + i][y]);
         console.log(selected1);
       }
     }
   } else {
     if (
-      selected1.includes(`a:${x}:${y}`) ||
-      selected1.includes(`a:${x}:${y + 1}`) ||
-      selected1.includes(`a:${x}:${y + 2}`) ||
-      selected1.includes(`a:${x}:${y + 3}`)
+      selected1.includes(grid1[x][y - 1]) ||
+      selected1.includes(grid1[x][y]) ||
+      selected1.includes(grid1[x][y + 1]) ||
+      selected1.includes(grid1[x][y + 2]) ||
+      y - 1 < 0 ||
+      y + 2 > 9
     ) {
-      console.log("error");
     } else {
-      for (let i = 0; i < 4; i++) {
+      for (let i = -1; i < 3; i++) {
         document.getElementById(grid1[x][y + i]).style.backgroundColor = "red";
-        let newLength = selected1.push(`a:${x}:${y + i}`);
+        let newLength = selected1.push(grid1[x][y + i]);
         console.log(selected1);
       }
     }
@@ -147,29 +151,31 @@ function placeCruiser(x, y) {
 function placeThreelong(x, y) {
   if (boatOrientation == 0) {
     if (
-      selected1.includes(`a:${x}:${y}`) ||
-      selected1.includes(`a:${x + 1}:${y}`) ||
-      selected1.includes(`a:${x + 2}:${y}`)
+      selected1.includes(grid1[x - 1][y]) ||
+      selected1.includes(grid1[x][y]) ||
+      selected1.includes(grid1[x + 1][y]) ||
+      x - 1 < 0 ||
+      x + 1 > 9
     ) {
-      console.log("error");
     } else {
-      for (let i = 0; i < 3; i++) {
+      for (let i = -1; i < 2; i++) {
         document.getElementById(grid1[x + i][y]).style.backgroundColor = "red";
-        let newLength = selected1.push(`a:${x + i}:${y}`);
+        let newLength = selected1.push(grid1[x + i][y]);
         console.log(selected1);
       }
     }
   } else {
     if (
-      selected1.includes(`a:${x}:${y}`) ||
-      selected1.includes(`a:${x}:${y + 1}`) ||
-      selected1.includes(`a:${x}:${y + 2}`)
+      selected1.includes(grid1[x][y - 1]) ||
+      selected1.includes(grid1[x][y]) ||
+      selected1.includes(grid1[x][y + 1]) ||
+      y - 1 < 0 ||
+      y + 1 > 9
     ) {
-      console.log("error");
     } else {
-      for (let i = 0; i < 3; i++) {
+      for (let i = -1; i < 2; i++) {
         document.getElementById(grid1[x][y + i]).style.backgroundColor = "red";
-        let newLength = selected1.push(`a:${x}:${y + i}`);
+        let newLength = selected1.push(grid1[x][y + i]);
         console.log(selected1);
       }
     }
@@ -180,27 +186,29 @@ function placeThreelong(x, y) {
 function placeSub(x, y) {
   if (boatOrientation == 0) {
     if (
-      selected1.includes(`a:${x}:${y}`) ||
-      selected1.includes(`a:${x - 1}:${y}`)
+      selected1.includes(grid1[x][y]) ||
+      selected1.includes(grid1[x + 1][y]) ||
+      x < 0 ||
+      x + 1 > 9
     ) {
-      console.log("error");
     } else {
       for (let i = 0; i < 2; i++) {
         document.getElementById(grid1[x + i][y]).style.backgroundColor = "red";
-        let newLength = selected1.push(`a:${x + i}:${y}`);
+        let newLength = selected1.push(grid1[x + i][y]);
         console.log(selected1);
       }
     }
   } else {
     if (
-      selected1.includes(`a:${x}:${y}`) ||
-      selected1.includes(`a:${x}:${y - 1}`)
+      selected1.includes(grid1[x][y]) ||
+      selected1.includes(grid1[x][y + 1]) ||
+      y < 0 ||
+      y + 1 > 9
     ) {
-      console.log("error");
     } else {
       for (let i = 0; i < 2; i++) {
         document.getElementById(grid1[x][y + i]).style.backgroundColor = "red";
-        let newLength = selected1.push(`a:${x}:${y + i}`);
+        let newLength = selected1.push(grid1[x][y + i]);
         console.log(selected1);
       }
     }
@@ -225,19 +233,15 @@ function boatLength() {
 }
 
 function toggleBoats() {
-  console.log("workes");
   if (gamemode1 == 0) {
-    for (let i = 0; i < grid1.length; i++) {
-      console.log(i);
-      let element = grid1[i];
-      document.getElementById(element).style.backgroundColor = "blue";
+    for (let i = 0; i < selected1.length; i++) {
+      document.getElementById(selected1[i]).style.backgroundColor = "#5d9ad4";
     }
 
     gamemode1 = 1;
   } else {
     for (let i = 0; i < selected1.length; i++) {
-      let element = selected1[i];
-      document.getElementById(element).style.backgroundColor = "red";
+      document.getElementById(selected1[i]).style.backgroundColor = "red";
     }
     gamemode1 = 0;
   }
