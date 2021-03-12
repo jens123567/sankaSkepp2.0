@@ -12,11 +12,6 @@ main {
   transform: scale(1);
 }
 
-#board1 div:hover {
-  transform: scale(1.04);
-  background-color: #5287b9;
-}
-
 #boatLengthButtons {
   display: flex;
   flex-direction: column;
