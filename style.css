@@ -1,3 +1,7 @@
+* {
+  font-family: "Roboto", sans-serif;
+}
+
 main {
   display: flex;
 }
@@ -41,4 +45,8 @@ button:hover {
 
 button:active {
   transform: scale(0.95);
+}
+
+#boatsLeft {
+  padding-left: 12px;
 }

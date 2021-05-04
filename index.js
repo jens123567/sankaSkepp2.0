@@ -31,6 +31,7 @@ for (let x = 0; x < columns; x++) {
 
     cell1.addEventListener("click", () => {
       click(x, y);
+      score();
     });
     cell1.addEventListener("mouseover", () => {
       boatHover(x, y);
@@ -303,4 +304,10 @@ function boatLeave(x, y) {
   } else {
     document.getElementById(grid1[x][y]).style.transform = "scale(1)";
   }
+}
+
+function score() {
+  document.getElementById(
+    "boatsLeft"
+  ).innerHTML = `<p>${selected1.length} Båt-delar kvar</p>`;
 }

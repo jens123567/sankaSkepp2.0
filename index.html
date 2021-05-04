@@ -1,28 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sänka skepp 2</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <script type="text/javascript" src="index.js" defer></script>
-    <link rel="icon" href="https://icons-for-free.com/iconfiles/png/512/directions+boat+24px-131987942711942905.png" >
-</head>
-<body>
+    <link
+      rel="icon"
+      href="https://icons-for-free.com/iconfiles/png/512/directions+boat+24px-131987942711942905.png"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <header><h2>Sänka Skepp 2</h2></header>
 
     <main>
-        <div id="board1"></div>
-     
-        <div id="boatLengthButtons">
-            <button id="boatLengthButton" onclick="boatLength()">Byt storlek på båt</button>
-            <button onclick=" boatRotation()">Rotera båt</button>
-            <button onclick="toggleBoats()">Visa/Dölj båtar</button>
-            <button onclick="location.reload()">Reset Game</button>
-        </div>
+      <div id="board1"></div>
 
-        <div id="board2"></div>
+      <div id="boatLengthButtons">
+        <button id="boatLengthButton" onclick="boatLength()">
+          Byt storlek på båt
+        </button>
+        <button onclick=" boatRotation()">Rotera båt</button>
+        <button onclick="toggleBoats()">Visa/Dölj båtar</button>
+        <button onclick="location.reload()">Reset Game</button>
+        <div id="boatsLeft"></div>
+      </div>
+
+      <div id="board2"></div>
     </main>
-    
-</body>
+  </body>
 </html>
